@@ -1,0 +1,213 @@
+/* ===== MyContacts: estilos ===== */
+
+.root {
+    -fx-font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    -fx-font-size: 13px;
+    -cor-primaria: #2f6fde;
+    -cor-primaria-escura: #1f56b8;
+    -cor-perigo: #d64545;
+    -cor-texto: #1f2933;
+    -cor-suave: #6b7785;
+    -cor-borda: #dde3ea;
+    -cor-fundo: #f4f6f9;
+}
+
+.raiz {
+    -fx-background-color: -cor-fundo;
+}
+
+/* Cabeçalho */
+.cabecalho {
+    -fx-padding: 22 24 16 24;
+}
+
+.titulo {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -cor-texto;
+}
+
+.subtitulo {
+    -fx-text-fill: -cor-suave;
+}
+
+.contador {
+    -fx-background-color: white;
+    -fx-background-radius: 20;
+    -fx-border-color: -cor-borda;
+    -fx-border-radius: 20;
+    -fx-padding: 5 12 5 12;
+    -fx-text-fill: -cor-suave;
+}
+
+/* Campos */
+.text-field, .combo-box {
+    -fx-background-color: white;
+    -fx-background-radius: 6;
+    -fx-border-color: -cor-borda;
+    -fx-border-radius: 6;
+    -fx-padding: 6 10 6 10;
+}
+
+.text-field:focused, .combo-box:focused {
+    -fx-border-color: -cor-primaria;
+}
+
+.combo-box {
+    -fx-padding: 1 4 1 4;
+}
+
+.campo-erro, .campo-erro:focused {
+    -fx-border-color: -cor-perigo;
+    -fx-background-color: #fff6f6;
+}
+
+/* Tabela */
+.tabela {
+    -fx-background-color: white;
+    -fx-background-radius: 8;
+    -fx-border-color: -cor-borda;
+    -fx-border-radius: 8;
+    -fx-padding: 4;
+}
+
+.tabela .column-header-background {
+    -fx-background-color: white;
+}
+
+.tabela .column-header, .tabela .filler {
+    -fx-background-color: white;
+    -fx-border-color: transparent transparent -cor-borda transparent;
+    -fx-size: 36;
+}
+
+.tabela .column-header .label {
+    -fx-text-fill: -cor-suave;
+    -fx-font-weight: bold;
+    -fx-alignment: CENTER_LEFT;
+    -fx-padding: 0 0 0 8;
+}
+
+.tabela .table-row-cell {
+    -fx-background-color: white;
+    -fx-border-color: transparent transparent #f0f2f5 transparent;
+    -fx-cell-size: 36;
+}
+
+.tabela .table-row-cell:hover {
+    -fx-background-color: #f5f8fe;
+}
+
+.tabela .table-row-cell:selected {
+    -fx-background-color: #e3ecfc;
+}
+
+.tabela .table-row-cell .text {
+    -fx-fill: -cor-texto;
+}
+
+.tabela .table-cell {
+    -fx-padding: 0 10 0 10;
+    -fx-alignment: CENTER_LEFT;
+}
+
+.vazio {
+    -fx-text-fill: -cor-suave;
+}
+
+/* Rodapé */
+.rodape {
+    -fx-padding: 16 24 20 24;
+}
+
+.status {
+    -fx-text-fill: #2e8b57;
+}
+
+/* Botões */
+.button {
+    -fx-background-radius: 6;
+    -fx-padding: 7 16 7 16;
+    -fx-cursor: hand;
+    -fx-font-weight: bold;
+}
+
+.botao-primario {
+    -fx-background-color: -cor-primaria;
+    -fx-text-fill: white;
+}
+
+.botao-primario:hover {
+    -fx-background-color: -cor-primaria-escura;
+}
+
+.botao-secundario {
+    -fx-background-color: white;
+    -fx-text-fill: -cor-texto;
+    -fx-border-color: -cor-borda;
+    -fx-border-radius: 6;
+}
+
+.botao-secundario:hover {
+    -fx-background-color: #eef2f7;
+}
+
+.botao-perigo {
+    -fx-background-color: white;
+    -fx-text-fill: -cor-perigo;
+    -fx-border-color: #f0c4c4;
+    -fx-border-radius: 6;
+}
+
+.botao-perigo:hover {
+    -fx-background-color: #fdeeee;
+}
+
+.button:disabled {
+    -fx-opacity: 0.45;
+}
+
+/* Formulário e detalhes */
+.formulario {
+    -fx-background-color: white;
+    -fx-padding: 24;
+}
+
+.titulo-form {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -cor-texto;
+}
+
+.erro {
+    -fx-text-fill: -cor-perigo;
+}
+
+.avatar {
+    -fx-background-color: -cor-primaria;
+    -fx-background-radius: 30;
+    -fx-text-fill: white;
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-min-width: 54;
+    -fx-min-height: 54;
+    -fx-alignment: CENTER;
+}
+
+.etiqueta-tipo {
+    -fx-background-color: #e3ecfc;
+    -fx-text-fill: -cor-primaria-escura;
+    -fx-background-radius: 10;
+    -fx-padding: 2 10 2 10;
+    -fx-font-size: 11px;
+}
+
+.detalhes-grid {
+    -fx-background-color: -cor-fundo;
+    -fx-background-radius: 8;
+    -fx-padding: 14;
+}
+
+.rotulo {
+    -fx-text-fill: -cor-suave;
+}
