@@ -17,7 +17,6 @@
             fx:controller="controller.PrincipalController"
             styleClass="raiz">
 
-    <!-- Cabeçalho: título + busca + filtro -->
     <top>
         <VBox styleClass="cabecalho" spacing="14">
             <HBox alignment="CENTER_LEFT" spacing="10">
@@ -60,7 +59,7 @@
         </TableView>
     </center>
 
-    <!-- Ações -->
+    <!-- Açoes -->
     <bottom>
         <HBox styleClass="rodape" spacing="10" alignment="CENTER_LEFT">
             <Button text="+ Novo contato" onAction="#onNovo" styleClass="botao-primario" defaultButton="false"/>
