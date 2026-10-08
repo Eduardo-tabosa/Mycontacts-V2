@@ -14,9 +14,7 @@ import service.Agenda;
 import utils.ValidadorContato;
 import utils.ValidadorEmail;
 
-/**
- * Controla o formulário de cadastro e edição (cadastro.fxml).
- */
+
 public class CadastroController {
 
     private static final String TIPO_PESSOAL = "Pessoal";
@@ -44,7 +42,7 @@ public class CadastroController {
         cbTipo.setOnAction(e -> atualizarCampoEmpresa());
         atualizarCampoEmpresa();
 
-        // Feedback visual enquanto o usuário digita
+        
         txtEmail.textProperty().addListener((obs, a, novo) ->
                 marcar(txtEmail, !novo.isBlank() && !ValidadorEmail.validar(novo)));
         txtTelefone.textProperty().addListener((obs, a, novo) ->
@@ -56,7 +54,7 @@ public class CadastroController {
         this.agenda = agenda;
     }
 
-    /** Recebe o contato a editar, ou null para cadastrar um novo. */
+    
     public void setContato(Contato contato) {
         this.contatoOriginal = contato;
         if (contato == null) {
@@ -105,7 +103,7 @@ public class CadastroController {
         fechar();
     }
 
-    // ---------- auxiliares ----------
+    
 
     private Contato montarContato() {
         int id = contatoOriginal == null ? 0 : contatoOriginal.getId();
