@@ -9,13 +9,6 @@ import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- * Centraliza o acesso ao banco SQLite.
- *
- * A aplicação usa o arquivo "mycontacts.db" (criado automaticamente na pasta
- * do projeto). Os testes usam "jdbc:sqlite::memory:", um banco que existe
- * só enquanto a conexão estiver aberta.
- */
 public class Conexao {
 
     public static final String URL_PADRAO = "jdbc:sqlite:mycontacts.db";
@@ -37,7 +30,6 @@ public class Conexao {
     private Conexao() {
     }
 
-    /** Conexão única usada pela aplicação. */
     public static synchronized Connection getConexao() {
         try {
             if (conexaoApp == null || conexaoApp.isClosed()) {
@@ -49,7 +41,6 @@ public class Conexao {
         }
     }
 
-    /** Abre uma nova conexão com a URL informada e garante que a tabela exista. */
     public static Connection abrir(String url) throws SQLException {
         Connection conn = DriverManager.getConnection(url);
         criarTabela(conn);
