@@ -1,8 +1,5 @@
 package model;
 
-/**
- * Contato comercial: um contato comum com o nome da empresa.
- */
 public class ContatoComercial extends Contato {
 
     private String empresa;
