@@ -5,9 +5,7 @@ import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import model.Contato;
 
-/**
- * Controla a tela de detalhes (detalhes.fxml).
- */
+
 public class DetalhesController {
 
     @FXML private Label lblIniciais;
