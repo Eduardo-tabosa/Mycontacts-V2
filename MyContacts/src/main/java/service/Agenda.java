@@ -10,13 +10,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Locale;
 
-/**
- * Regras de negócio da agenda.
- *
- * O banco (ContatoDAO) é a fonte oficial dos dados. O RepositorioGenerico
- * funciona como uma cópia em memória, usada para buscas e filtros rápidos
- * na tela sem precisar consultar o banco a cada tecla digitada.
- */
 public class Agenda {
 
     private final ContatoDAO dao;
@@ -27,7 +20,6 @@ public class Agenda {
         recarregar();
     }
 
-    /** Lê tudo do banco de novo e atualiza a cópia em memória. */
     public void recarregar() {
         repositorio.substituirTodos(dao.listarTodos());
     }
@@ -39,7 +31,6 @@ public class Agenda {
         return contato;
     }
 
-    /** Salva vários contatos de uma vez (tudo ou nada). */
     public void adicionarTodos(Collection<? extends Contato> contatos) {
         for (Contato c : contatos) {
             ValidadorContato.validar(c);
@@ -67,7 +58,6 @@ public class Agenda {
         return repositorio.listarTodos();
     }
 
-    /** Busca por parte do nome, ignorando maiúsculas e minúsculas. */
     public List<Contato> buscarPorNome(String trecho) {
         if (trecho == null || trecho.isBlank()) {
             return listarContatos();
@@ -81,7 +71,6 @@ public class Agenda {
                 .orElseThrow(() -> new ContatoNaoEncontradoException("Contato com id " + id + " não existe."));
     }
 
-    /** Ex: listarPorTipo(ContatoComercial.class) */
     public <S extends Contato> List<S> listarPorTipo(Class<S> tipo) {
         return repositorio.filtrarPorTipo(tipo);
     }
