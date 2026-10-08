@@ -4,9 +4,6 @@ import exceptions.ContatoInvalidoException;
 import model.Contato;
 import model.ContatoComercial;
 
-/**
- * Reúne as regras de validação de um contato antes de salvar.
- */
 public class ValidadorContato {
 
     private ValidadorContato() {
@@ -33,7 +30,6 @@ public class ValidadorContato {
         }
     }
 
-    /** Aceita números com ou sem máscara: conta apenas os dígitos. */
     public static boolean telefoneValido(String telefone) {
         if (vazio(telefone)) return false;
         if (!telefone.matches("[0-9()+\\-\\s]+")) return false;
