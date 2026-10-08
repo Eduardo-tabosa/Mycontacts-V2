@@ -29,10 +29,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-/**
- * Controla a tela principal (principal.fxml): lista, busca, filtro,
- * e os botões de novo, editar, detalhes e remover.
- */
+
 public class PrincipalController {
 
     private static final String FILTRO_TODOS = "Todos";
@@ -56,7 +53,7 @@ public class PrincipalController {
     private Agenda agenda;
     private final ObservableList<Contato> dados = FXCollections.observableArrayList();
 
-    /** Chamado automaticamente pelo FXMLLoader depois de injetar os @FXML. */
+    
     @FXML
     private void initialize() {
         colNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
@@ -69,11 +66,11 @@ public class PrincipalController {
         cbFiltro.getItems().setAll(FILTRO_TODOS, FILTRO_PESSOAIS, FILTRO_COMERCIAIS);
         cbFiltro.setValue(FILTRO_TODOS);
 
-        // Busca enquanto digita e ao trocar o filtro
+        
         txtBusca.textProperty().addListener((obs, antigo, novo) -> atualizarTabela());
         cbFiltro.setOnAction(e -> atualizarTabela());
 
-        // Botões que dependem de um contato selecionado
+        
         tabela.getSelectionModel().selectedItemProperty().addListener((obs, antigo, novo) -> {
             boolean nada = novo == null;
             btnEditar.setDisable(nada);
@@ -84,7 +81,7 @@ public class PrincipalController {
         btnDetalhes.setDisable(true);
         btnRemover.setDisable(true);
 
-        // Duplo clique abre os detalhes
+        
         tabela.setRowFactory(tv -> {
             TableRow<Contato> linha = new TableRow<>();
             linha.setOnMouseClicked(evento -> {
@@ -101,7 +98,7 @@ public class PrincipalController {
         atualizarTabela();
     }
 
-    // ---------- ações dos botões (ligadas no FXML via onAction="#...") ----------
+    
 
     @FXML
     private void onNovo() {
@@ -157,7 +154,7 @@ public class PrincipalController {
         cbFiltro.setValue(FILTRO_TODOS);
     }
 
-    // ---------- auxiliares ----------
+    
 
     private void atualizarTabela() {
         if (agenda == null) return;
@@ -180,7 +177,7 @@ public class PrincipalController {
         lblTotal.setText(total == 1 ? "1 contato" : total + " contatos");
     }
 
-    /** Abre o formulário. Retorna true se o usuário salvou. */
+    
     private boolean abrirCadastro(Contato contato) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/cadastro.fxml"));
