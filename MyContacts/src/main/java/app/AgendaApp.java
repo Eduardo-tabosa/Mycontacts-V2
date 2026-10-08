@@ -11,9 +11,6 @@ import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 import service.Agenda;
 
-/**
- * Ponto de entrada da interface gráfica (JavaFX).
- */
 public class AgendaApp extends Application {
 
     @Override
