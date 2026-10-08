@@ -2,11 +2,6 @@ package model;
 
 import java.util.Objects;
 
-/**
- * Contato simples (pessoal) da agenda.
- * Os atributos agora são privados e acessados por getters/setters,
- * o que é necessário para o TableView do JavaFX ler os valores.
- */
 public class Contato {
 
     private int id;
@@ -57,17 +52,14 @@ public class Contato {
         this.email = email;
     }
 
-    /** Contato simples não tem empresa. */
     public String getEmpresa() {
         return null;
     }
 
-    /** Usado na coluna "Tipo" da tabela. */
     public String getTipo() {
         return "Pessoal";
     }
 
-    /** Texto completo do contato, usado na tela de detalhes. */
     public String apresentar() {
         return "Nome: " + nome + "\n"
                 + "Telefone: " + telefone + "\n"
@@ -79,7 +71,6 @@ public class Contato {
         if (this == o) return true;
         if (!(o instanceof Contato)) return false;
         Contato outro = (Contato) o;
-        // Contatos já salvos são iguais se tiverem o mesmo id
         if (id != 0 && outro.id != 0) return id == outro.id;
         return Objects.equals(nome, outro.nome)
                 && Objects.equals(telefone, outro.telefone)
