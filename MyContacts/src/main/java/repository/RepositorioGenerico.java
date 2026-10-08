@@ -7,17 +7,6 @@ import java.util.List;
 import java.util.Optional;
 import java.util.function.Predicate;
 
-/**
- * Repositório genérico em memória.
- * Funciona com qualquer tipo T: Contato, ContatoComercial ou outro.
- *
- * Exemplos dos curingas:
- *  - "? extends T" em adicionarTodos: aceita uma lista de subtipos
- *    (ex: List<ContatoComercial> dentro de um RepositorioGenerico<Contato>).
- *  - "? super T" em buscar/remover/copiarPara: aceita filtros e destinos
- *    de um supertipo (ex: um Predicate<Object> ou uma List<Object>).
- *  - "?" em contar: aceita qualquer coleção, sem se importar com o tipo.
- */
 public class RepositorioGenerico<T> {
 
     private final List<T> elementos = new ArrayList<>();
@@ -35,7 +24,6 @@ public class RepositorioGenerico<T> {
         }
     }
 
-    /** Lista somente leitura com todos os elementos. */
     public List<T> listarTodos() {
         return Collections.unmodifiableList(elementos);
     }
@@ -59,10 +47,6 @@ public class RepositorioGenerico<T> {
         return Optional.empty();
     }
 
-    /**
-     * Retorna somente os elementos de um subtipo específico.
-     * Ex: repo.filtrarPorTipo(ContatoComercial.class) devolve List<ContatoComercial>.
-     */
     public <S extends T> List<S> filtrarPorTipo(Class<S> tipo) {
         List<S> resultado = new ArrayList<>();
         for (T elemento : elementos) {
@@ -77,14 +61,12 @@ public class RepositorioGenerico<T> {
         return elementos.remove(elemento);
     }
 
-    /** Remove todos que atendem ao filtro e retorna quantos foram removidos. */
     public int removerSe(Predicate<? super T> filtro) {
         int antes = elementos.size();
         elementos.removeIf(filtro);
         return antes - elementos.size();
     }
 
-    /** Copia os elementos para uma coleção de um supertipo. */
     public void copiarPara(Collection<? super T> destino) {
         destino.addAll(elementos);
     }
@@ -102,7 +84,6 @@ public class RepositorioGenerico<T> {
         elementos.clear();
     }
 
-    /** Método utilitário que conta itens de qualquer coleção. */
     public static int contar(Collection<?> colecao) {
         return colecao == null ? 0 : colecao.size();
     }
