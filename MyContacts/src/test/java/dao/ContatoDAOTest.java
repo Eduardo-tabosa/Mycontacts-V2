@@ -14,9 +14,6 @@ import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-/**
- * Testa o DAO usando SQLite em memória: cada teste ganha um banco novo e vazio.
- */
 class ContatoDAOTest {
 
     private Connection conn;
@@ -111,7 +108,6 @@ class ContatoDAOTest {
     void buscaProtegidaContraSqlInjection() {
         dao.inserir(new Contato("Ana", "85999990000", "a@email.com"));
 
-        // Se o texto fosse concatenado no SQL, isso apagaria a tabela
         List<Contato> resultado = dao.buscarPorNome("'; DROP TABLE contatos; --");
 
         assertTrue(resultado.isEmpty());
@@ -131,7 +127,6 @@ class ContatoDAOTest {
 
     @Test
     void inserirTodosFazRollbackSeUmFalhar() {
-        // nome é NOT NULL; o segundo contato vai quebrar a inserção
         Contato semNome = new Contato("Ok", "85999990000", "ok@x.com") {
             @Override
             public String getNome() {
