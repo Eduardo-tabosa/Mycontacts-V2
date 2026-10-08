@@ -2,10 +2,6 @@ package utils;
 
 import java.util.regex.Pattern;
 
-/**
- * Validação de e-mail. A versão anterior só checava se havia "@" e ".";
- * agora usamos uma expressão regular que exige usuário, domínio e extensão.
- */
 public class ValidadorEmail {
 
     private static final Pattern PADRAO =
