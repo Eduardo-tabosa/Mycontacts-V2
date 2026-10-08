@@ -16,13 +16,7 @@ import java.util.Optional;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- * Persistência dos contatos na tabela "contatos".
- *
- * Todas as consultas usam PreparedStatement com parâmetros (?),
- * o que impede SQL Injection: o valor digitado pelo usuário nunca
- * é concatenado direto no comando SQL.
- */
+
 public class ContatoDAO implements DAO<Contato> {
 
     private static final Logger LOG = Logger.getLogger(ContatoDAO.class.getName());
@@ -60,11 +54,7 @@ public class ContatoDAO implements DAO<Contato> {
         }
     }
 
-    /**
-     * Insere vários contatos em uma única transação.
-     * Se um deles falhar, nenhum é gravado (rollback).
-     * O curinga "? extends Contato" permite passar List<ContatoComercial>, por exemplo.
-     */
+    
     public void inserirTodos(Collection<? extends Contato> contatos) {
         boolean autoCommitOriginal = true;
         try {
@@ -139,7 +129,7 @@ public class ContatoDAO implements DAO<Contato> {
         }
     }
 
-    /** Busca por parte do nome, sem diferenciar maiúsculas e minúsculas. */
+    
     public List<Contato> buscarPorNome(String trecho) {
         try (PreparedStatement ps = conn.prepareStatement(SELECT_POR_NOME)) {
             ps.setString(1, "%" + trecho + "%");
@@ -152,7 +142,7 @@ public class ContatoDAO implements DAO<Contato> {
         }
     }
 
-    // ---------- auxiliares ----------
+
 
     private void preencher(PreparedStatement ps, Contato c) throws SQLException {
         ps.setString(1, limpar(c.getNome()));
@@ -161,7 +151,7 @@ public class ContatoDAO implements DAO<Contato> {
         ps.setString(4, c.getEmpresa() == null || c.getEmpresa().isBlank() ? null : c.getEmpresa().trim());
     }
 
-    /** Id criado pelo AUTOINCREMENT no último INSERT desta conexão. */
+    
     private int ultimoIdGerado() throws SQLException {
         try (Statement st = conn.createStatement();
              ResultSet rs = st.executeQuery("SELECT last_insert_rowid()")) {
@@ -173,7 +163,7 @@ public class ContatoDAO implements DAO<Contato> {
         return texto == null ? null : texto.trim();
     }
 
-    /** Se a coluna empresa estiver preenchida, o contato é comercial. */
+
     private Contato montar(ResultSet rs) throws SQLException {
         int id = rs.getInt("id");
         String nome = rs.getString("nome");
